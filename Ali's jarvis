@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ali AI Studio</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#0d1020;color:#f6f4ff;font-family:Arial,sans-serif}
+header{padding:20px;background:#171a30;border-bottom:1px solid #343653}
+h1{margin:0;color:#c7a7ff}
+p{color:#c1c4db;line-height:1.6}
+main{max-width:760px;margin:auto;padding:18px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap}
+button{background:#7854db;color:white;border:0;border-radius:12px;padding:12px;cursor:pointer}
+.panel{background:#191d35;border:1px solid #343653;border-radius:18px;padding:18px;margin-top:16px}
+textarea,input{width:100%;background:#101328;color:white;border:1px solid #454966;border-radius:12px;padding:13px;margin:8px 0;font:inherit}
+#answer{white-space:pre-wrap;line-height:1.7}
+.small{font-size:13px;color:#aeb3ce}
+</style>
+</head>
+<body>
+<header>
+<h1>💜 Ali AI Studio</h1>
+<p>Your ideas. Your imagination. Your AI.</p>
+</header>
+<main>
+<div class="tabs">
+<button onclick="show('chat')">💬 AI Chat</button>
+<button onclick="show('video')">🎬 Video Maker</button>
+</div>
+
+<section class="panel" id="chat">
+<h2>Ask Ali AI</h2>
+<p>Apna sawal likho. Demo assistant tumhe step-by-step jawab dene ki koshish karega.</p>
+<textarea id="question" rows="4" placeholder="Misal: Solar system ko asaan alfaaz mein samjhao"></textarea>
+<button onclick="reply()">Explain step by step</button>
+<div id="answer"></div>
+</section>
+
+<section class="panel" id="video" hidden>
+<h2>🎬 AI Video Maker</h2>
+<p>Apni video ka idea likho aur ek detailed video plan banao.</p>
+<textarea id="idea" rows="4" placeholder="Misal: Hunza Valley ki cinematic travel video"></textarea>
+<button onclick="makePlan()">Create video plan</button>
+<div id="plan"></div>
+<p class="small">Ye abhi planning demo hai, actual video render nahi karta.</p>
+</section>
+
+<p class="small">Ali AI Studio • Your own project</p>
+</main>
+<script>
+function show(id){
+document.getElementById('chat').hidden=id!=='chat';
+document.getElementById('video').hidden=id!=='video';
+}
+function reply(){
+const q=document.getElementById('question').value.trim();
+const out=document.getElementById('answer');
+if(!q){out.textContent='Pehle apna sawal likho.';return;}
+out.textContent='Tumhara sawal: '+q+
+'\n\nStep 1: Sawal ke main topic ko pehchano.'+
+'\n\nStep 2: Topic ko chhote hisson mein divide karo.'+
+'\n\nStep 3: Har hissa example ke saath samjho.'+
+'\n\nNote: Ye demo reply hai, real AI-generated answer nahi. Real AI ke liye model connect karna baqi hai.';
+}
+function makePlan(){
+const idea=document.getElementById('idea').value.trim();
+const out=document.getElementById('plan');
+if(!idea){out.textContent='Pehle video ka idea likho.';return;}
+out.textContent='VIDEO PLAN\n\nIdea: '+idea+
+'\n\nScene 1 — Opening: Wide establishing shot.'+
+'\n\nScene 2 — Main story: Show the key subject and action.'+
+'\n\nScene 3 — Details: Add close-ups and smooth transitions.'+
+'\n\nScene 4 — Ending: Finish with a memorable final shot.'+
+'\n\nSuggested format: 16:9 landscape, clear captions, suitable music.'+
+'\n\nNote: Ye storyboard hai; actual video abhi generate nahi hoti.';
+}
+</script>
+</body>
+</html>
